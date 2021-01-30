@@ -2,14 +2,7 @@ package com.eable.lesson2;
 
 public class Lssn2 {
     public static void main(String[] args) {
-        work2();
-
-        // 3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом,
-        //   и числа меньшие 6 умножить на 2;
-
-        // 4. Создать квадратный двумерный целочисленный массив
-        //   (количество строк и столбцов одинаковое)
-        //   и с помощью цикла(-ов) заполнить его диагональные элементы единицами;
+        work4();
 
         // 5. ** Задать одномерный массив и найти в нем минимальный и максимальный элементы
         //   (без помощи интернета);
@@ -29,6 +22,14 @@ public class Lssn2 {
         //   При каком n в какую сторону сдвиг можете выбирать сами.
     }
 
+    // DRY
+    static void printerForEach(int[] array){
+        for (int i = 0; i < array.length; i++){
+            System.out.print(array[i] + " ");
+        }
+    }
+    //
+
     // 1. Задать целочисленный массив, состоящий из элементов 0 и 1.
     //   Например: [ 1, 1, 0, 0, 1, 0, 1, 1, 0, 0 ].
     //   С помощью цикла и условия заменить 0 на 1, 1 на 0;
@@ -42,9 +43,7 @@ public class Lssn2 {
                 newArr[i] = 0;
             }
         }
-        for (int i = 0; i < newArr.length; i++){
-            System.out.print(newArr[i] + " ");
-        }
+        printerForEach(newArr);
     }
 
     // 2. Задать пустой целочисленный массив размером 8.
@@ -54,8 +53,36 @@ public class Lssn2 {
         for (int i = 1, j = 0; i < arr.length; i++, j +=3) {
             arr[i] = j + 3;
         }
-        for (int i = 0; i < arr.length; i++){
-            System.out.print(arr[i] + " ");
+        printerForEach(arr);
+    }
+
+    // 3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом,
+    //   и числа меньшие 6 умножить на 2;
+    static void work3(){
+        int[] arr = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print( (arr[i] < 6) ? arr[i] * 2 + " " : arr[i] + " ");
         }
     }
+
+    // 4. Создать квадратный двумерный целочисленный массив
+    //   (количество строк и столбцов одинаковое)
+    //   и с помощью цикла(-ов) заполнить его диагональные элементы единицами;
+    static void work4(){
+        int[][] arr = new int[6][6];
+        for (int i = 0; i < arr.length; i++){
+            for (int j = 0; j < arr[i].length; j++){
+                if ((i == j) || (i == arr[i].length -1 - j)) {
+                    arr[i][j] = 1;
+                }
+            }
+        }
+        for (int i = 0; i < arr.length; i++){
+            for (int j = 0; j < arr[i].length; j++){
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
 }
