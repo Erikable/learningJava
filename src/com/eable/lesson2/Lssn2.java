@@ -2,10 +2,9 @@ package com.eable.lesson2;
 
 public class Lssn2 {
     public static void main(String[] args) {
-        work4();
+        work5();
 
-        // 5. ** Задать одномерный массив и найти в нем минимальный и максимальный элементы
-        //   (без помощи интернета);
+
 
         // 6. ** Написать метод, в который передается не пустой одномерный целочисленный массив,
         //   метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой части массива равны.
@@ -85,4 +84,20 @@ public class Lssn2 {
         }
     }
 
+    // 5. ** Задать одномерный массив и найти в нем минимальный и максимальный элементы
+    //   (без помощи интернета);
+    static void work5(){
+        int[] arr = {-13, 666, 2, 26, 97, -6};
+        int min = arr[0];
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {  // min = (min < arr[i]) ? min : arr[i] ;
+           if (min < arr[i]){
+               min = min;
+           } else {
+               min = arr[i];
+           }
+            max = (max > arr[i]) ? max : arr[i] ;
+        }
+        System.out.println("Min = " + min +";\n" + "Max = " + max );
+    }
 }
